@@ -1,0 +1,105 @@
+{
+  "enabled": {
+    "description": "启用自动定位回复",
+    "type": "bool",
+    "default": true,
+    "hint": "关闭后不会自动回复图片定位，但仍可以使用 /exif 手动查看。"
+  },
+  "provider": {
+    "description": "逆地理编码服务",
+    "type": "string",
+    "options": ["auto", "bigdatacloud", "amap", "nominatim"],
+    "labels": [
+      "自动（推荐）",
+      "BigDataCloud（免 Key）",
+      "高德地图（需 Key）",
+      "OpenStreetMap Nominatim"
+    ],
+    "default": "auto",
+    "hint": "auto：国内坐标有高德 Key 时用高德，否则用 BigDataCloud，失败自动尝试下一个；海外坐标不使用高德。"
+  },
+  "amap_api_key": {
+    "description": "高德地图 Web 服务 API Key",
+    "type": "string",
+    "default": "",
+    "secret": true,
+    "hint": "到 https://console.amap.com/dev/key/app 申请「Web 服务」类型的 Key。仅 provider 为 auto/amap 时需要。"
+  },
+  "enable_poi_lookup": {
+    "description": "识别附近地点（免 Key）",
+    "type": "bool",
+    "default": true,
+    "hint": "通过 OpenStreetMap 的 Photon 服务查找拍摄点最近的地标/道路，让地址精确到具体地点。服务不可用时自动跳过并暂停 10 分钟。"
+  },
+  "poi_radius": {
+    "description": "附近地点搜索半径（米）",
+    "type": "int",
+    "default": 300,
+    "slider": {"min": 50, "max": 1000, "step": 50},
+    "hint": "仅识别该范围内的地点，太远的地标会误导。"
+  },
+  "reply_template": {
+    "description": "回复模板",
+    "type": "text",
+    "default": "请问是{region}的{sender}群友吗？🤔",
+    "hint": "{region} 为完整详细地址（国家+省+市+区+街道+地点）。可用占位符：{region} {country} {province} {city} {district} {township} {poi} {address} {lat} {lng} {sender} {group}"
+  },
+  "report_unresolved": {
+    "description": "地址解析失败时仍回复坐标",
+    "type": "bool",
+    "default": false,
+    "hint": "关闭后，无法解析地址的图片不会产生任何回复。"
+  },
+  "enable_groups": {
+    "description": "群聊中启用",
+    "type": "bool",
+    "default": true
+  },
+  "enable_private": {
+    "description": "私聊中启用",
+    "type": "bool",
+    "default": true
+  },
+  "only_when_mentioned": {
+    "description": "仅在 @ 或唤醒词时检测",
+    "type": "bool",
+    "default": false,
+    "hint": "开启后，群里普通的图片消息不会触发检测，只有 @机器人 或带唤醒前缀时才处理。"
+  },
+  "max_images": {
+    "description": "单条消息最多检测的图片数",
+    "type": "int",
+    "default": 2,
+    "slider": {"min": 1, "max": 10, "step": 1}
+  },
+  "cooldown_seconds": {
+    "description": "同一人发图的触发冷却（秒）",
+    "type": "int",
+    "default": 5,
+    "slider": {"min": 0, "max": 120, "step": 1}
+  },
+  "cache_ttl": {
+    "description": "地址缓存时间（秒）",
+    "type": "int",
+    "default": 86400,
+    "slider": {"min": 0, "max": 604800, "step": 3600}
+  },
+  "timeout": {
+    "description": "网络请求超时（秒）",
+    "type": "int",
+    "default": 10,
+    "slider": {"min": 3, "max": 30, "step": 1}
+  },
+  "contact_email": {
+    "description": "联系邮箱（仅 Nominatim 使用）",
+    "type": "string",
+    "default": "",
+    "hint": "用于向 OpenStreetMap 标识调用方，遵守其使用政策；可留空。"
+  },
+  "stop_event_after_reply": {
+    "description": "回复后停止事件",
+    "type": "bool",
+    "default": false,
+    "hint": "开启后，插件回复完不再让 LLM 或其他插件继续处理这条消息，可避免私聊里出现两次回复。"
+  }
+}
