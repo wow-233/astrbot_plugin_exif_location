@@ -128,6 +128,10 @@ pip install pillow-heif
 
 ## 更新记录
 
+### 1.2.1
+
+- 按插件市场审查要求，移除对 Python 内置 `logging` 模块的依赖：`ReverseGeocoder` 必须由插件传入 AstrBot 提供的 logger（`astrbot.api.logger`），插件内日志记录器只来自 `astrbot.api`。
+
 ### 1.2.0
 
 - 自动回复精简为一句话，不再输出详细地址、附近地点、坐标、设备、海拔、地图链接等附加行。

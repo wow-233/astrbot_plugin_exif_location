@@ -15,7 +15,6 @@
 from __future__ import annotations
 
 import asyncio
-import logging
 import math
 import re
 import time
@@ -82,11 +81,18 @@ class GeoResult:
 
 
 class ReverseGeocoder:
-    """带缓存、限速和熔断的逆地理编码器。"""
+    """带缓存、限速和熔断的逆地理编码器。
 
-    def __init__(self, config: dict[str, Any], logger: logging.Logger | None = None):
+    logger 必须由调用方传入 AstrBot 提供的日志记录器
+    （``astrbot.api.logger`` 或插件专属 logger），本模块不使用
+    Python 内置 logging 模块。
+    """
+
+    def __init__(self, config: dict[str, Any], logger) -> None:
+        if logger is None:
+            raise ValueError("ReverseGeocoder 需要传入 AstrBot 的 logger")
         self.config = config or {}
-        self.logger = logger or logging.getLogger(__name__)
+        self.logger = logger
         try:
             timeout = float(self.config.get("timeout", 10) or 10)
         except (TypeError, ValueError):
