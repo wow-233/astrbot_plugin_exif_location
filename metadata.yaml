@@ -1,7 +1,7 @@
-name: astrbot_plugin_image_exif
+name: astrbot_plugin_exif_location
 display_name: 图片 EXIF 定位
 desc: 读取聊天图片 EXIF 中的 GPS 信息，逆地理编码后以“请问是XX的群友吗”的方式回复。
 short_desc: 从图片 EXIF 猜你在哪
 version: 1.2.2
 author: wow-233
-repo: https://github.com/wow-233/astrbot_plugin_image_exif
+repo: https://github.com/wow-233/astrbot_plugin_exif_location

@@ -1,6 +1,6 @@
 # 图片 EXIF 定位
 
-`astrbot_plugin_image_exif` —— 读取聊天图片 EXIF 中的 GPS 坐标，逆地理编码后以玩笑的方式回复一句话：
+`astrbot_plugin_exif_location` —— 读取聊天图片 EXIF 中的 GPS 坐标，逆地理编码后以玩笑的方式回复一句话：
 
 > 请问是中国浙江省宁波市鄞州区首南街道学府路地铁站的小明群友吗？🤔
 
@@ -30,7 +30,7 @@
 把 `astrbot_plugin_image_exif` 整个文件夹放进：
 
 ```text
-AstrBot/data/plugins/astrbot_plugin_image_exif/
+AstrBot/data/plugins/astrbot_plugin_exif_location/
 ```
 
 然后重载插件。
@@ -130,7 +130,7 @@ pip install pillow-heif
 
 ### 1.2.2
 
-- 仅顺延版本号：1.2.1 在插件市场提交审核时版本号被占用（市场规则：版本号一经使用不可复用），代码与 1.2.1 完全一致。
+- 插件由 `astrbot_plugin_image_exif` 更名为 `astrbot_plugin_exif_location`（原名在插件市场提交时版本号被占用，市场规则为版本号一经使用不可复用），代码与 1.2.1 完全一致。
 
 ### 1.2.1
 
@@ -156,7 +156,7 @@ pip install pillow-heif
 ## 目录结构
 
 ```text
-astrbot_plugin_image_exif/
+astrbot_plugin_exif_location/
 ├── main.py              # 插件入口、消息监听、/exif 指令
 ├── exif_utils.py        # EXIF / GPS 解析
 ├── geocoder.py          # 逆地理编码、附近地点、坐标转换、缓存
