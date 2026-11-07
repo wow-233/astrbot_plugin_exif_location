@@ -128,6 +128,10 @@ pip install pillow-heif
 
 ## 更新记录
 
+### 1.2.2
+
+- 仅顺延版本号：1.2.1 在插件市场提交审核时版本号被占用（市场规则：版本号一经使用不可复用），代码与 1.2.1 完全一致。
+
 ### 1.2.1
 
 - 按插件市场审查要求，移除对 Python 内置 `logging` 模块的依赖：`ReverseGeocoder` 必须由插件传入 AstrBot 提供的 logger（`astrbot.api.logger`），插件内日志记录器只来自 `astrbot.api`。
